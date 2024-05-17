@@ -24,8 +24,8 @@ function TodoList() {
   return (
     <Layout>
       <Header />
-      <Form todos={todos} setTodos={setTodos}/>
-      <List todos={todos} setTodos={setTodos}/>
+      <Form todos={todos} setTodos={setTodos} />
+      <List todos={todos} setTodos={setTodos} />
     </Layout>
   );
 }

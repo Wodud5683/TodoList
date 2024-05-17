@@ -1,19 +1,22 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./style.css";
 
 function Form({ todos, setTodos }) {
   const initialState = { id: 0, title: "", body: "", isDone: false };
   const [inputTodo, setInputTodo] = useState(initialState);
+  const nextId = useRef(todos.length + 1); // 초기 ID는 todos 배열 길이에 기반
 
   const onChangeHandler = (event) => {
     const { value, name } = event.target;
-    setInputTodo({ ...inputTodo, [name]: value });
+    setInputTodo((prevTodo) => ({ ...prevTodo, [name]: value }));
   };
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    setTodos([...todos, inputTodo]);
+    const newTodo = { ...inputTodo, id: nextId.current };
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
+    nextId.current += 1;
     setInputTodo(initialState);
   };
 
@@ -36,7 +39,7 @@ function Form({ todos, setTodos }) {
           value={inputTodo.body}
         />
       </div>
-      <button>추가하기</button>
+      <button type="submit">추가하기</button>
     </form>
   );
 }
