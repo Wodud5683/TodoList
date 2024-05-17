@@ -6,10 +6,15 @@ function Todo({ todo, onDeleteHandler, onCompleteHandler }) {
     <div className="todo_item">
       <h2>{todo.title}</h2>
       <p>{todo.body}</p>
-      <button onClick={() => onCompleteHandler(todo.id)}>
+      <button onClick={() => {      
+        onCompleteHandler(todo.id);
+      }}>
         {todo.isDone ? "취소" : "완료"}
       </button>
-      <button onClick={() => onDeleteHandler(todo.id)}>삭제</button>
+
+      <button onClick={() => {        
+        onDeleteHandler(todo.id);
+      }}>삭제</button>
     </div>
   );
 }

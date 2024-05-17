@@ -4,6 +4,7 @@ import Todo from '../todo/Todo';
 
 function List({ todos, setTodos }) {
   const onDeleteHandler = (selectedId) => {
+    console.log(`Deleting todo with id: ${selectedId}`);
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== selectedId));
   };
 
@@ -42,6 +43,7 @@ function List({ todos, setTodos }) {
     </div>
   );
 }
+
 
 List.propTypes = {
   todos: PropTypes.array.isRequired,
